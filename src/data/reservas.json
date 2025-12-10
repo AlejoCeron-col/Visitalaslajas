@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1765338809315",
+    "cedula": "1080044759",
+    "nombre": "Alejo Ordoñez",
+    "email": "tersonwar@gmail.com",
+    "telefono": "3186211735",
+    "fechaVisita": "2025-12-13",
+    "lugaresSeleccionados": [
+      "mirador-lajas",
+      "puente-santuario",
+      "catedral-ipiales"
+    ],
+    "guiaId": "g5",
+    "fechaCreacion": "2025-12-10T03:53:29.315Z"
+  }
+]

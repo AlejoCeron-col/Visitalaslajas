@@ -36,17 +36,17 @@ app.use(express.static(path.join(__dirname, "../public")))
 
 app.use(session({
     store: new FileStore({
-      path: './sessions',  // Carpeta donde se guardan las sesiones
-      ttl: 86400           // 24 horas
+      path: path.resolve(__dirname, './sessions'), 
+      ttl: 300,
+      reapinterval: 60,
     }),
     secret: process.env.SESSION_SECRET || "clave-secreta",
     resave: false,
     saveUninitialized: false,
     cookie: { 
-      secure: false,                 // Cambiar a true solo si usas HTTPS
-      httpOnly: true,                // Protege contra XSS
-      maxAge: 1000 * 60 * 60 * 24,   // 24 horas de duración
-      sameSite: 'lax'                // Permite envío de cookies en navegación normal
+      secure: false,                
+      httpOnly: true,                 
+      sameSite: 'lax'                
     }
   })
 );
@@ -67,7 +67,7 @@ app.get("/", (req, res) => {
   })
 })
 
-// Iniciar servidor
+
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`)
   console.log(`Página principal disponible en http://localhost:${PORT}/`)

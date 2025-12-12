@@ -2,5 +2,5 @@
   "watch": ["src", "public"],
   "ext": "js,ejs,css,json",
   "ignore": ["node_modules"],
-  "exec": "node src/index.js"
+  "exec": "node src/app.js"
 }

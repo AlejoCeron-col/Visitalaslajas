@@ -1,0 +1,49 @@
+[
+  {
+    "cedula": "27156464",
+    "nombre": "auda",
+    "telefono": "3158047045",
+    "email": "aumar@gmail.com",
+    "contraseña": "auda"
+  },
+  {
+    "id": "1765411446830",
+    "cedula": "1234",
+    "nombre": "nom app",
+    "fechanacimiento": "2025-12-28",
+    "telefono": "12345678",
+    "email": "correo@gmail.com",
+    "passwordHash": "$2b$10$C0BiIcg52bN//3fozmEJTObzmNVow.f.2o8ovFwK3x.6RBM7s5Lje",
+    "fechaRegistro": "2025-12-11T00:04:06.830Z"
+  },
+  {
+    "id": "1765515634808",
+    "cedula": "12345",
+    "nombre": "al jo",
+    "fechanacimiento": "2025-12-24",
+    "telefono": "000000",
+    "email": "cor2@gmail.com",
+    "passwordHash": "$2b$10$YJEBx2z64ymHbpPRv8Ztye8bH374AEnqriwtyDXRrQI5qfCrMbdwO",
+    "fechaRegistro": "2025-12-12T05:00:34.808Z"
+  },
+  {
+    "id": "1765515798300",
+    "cedula": "1",
+    "nombre": "1",
+    "fechanacimiento": "2025-12-17",
+    "telefono": "1",
+    "email": "1@gmail.com",
+    "passwordHash": "$2b$10$XXOLU9Lg79k3Ofl0Nho0K.BF8Hj1sR/icnDRltrwKcmRDIMyoz5ua",
+    "fechaRegistro": "2025-12-12T05:03:18.300Z"
+  },
+  {
+    "id": "1765516091662",
+    "cedula": "1080044759",
+    "nombre": "Alejo Ordoñez",
+    "fechanacimiento": "2025-12-23",
+    "telefono": "3186211735",
+    "email": "tersonwar@gmail.com",
+    "passwordHash": "$2b$10$Ui1lNJD3Bgsgh.TxJ.oS.uEr3328H4373mCQtfZRVa1UR0.Lwbrjm",
+    "fechaRegistro": "2025-12-12T05:08:11.662Z"
+  }
+]

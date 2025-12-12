@@ -1,8 +1,12 @@
-<%- include("../components/header.ejs", { titulo: "Inicio" }) %>
+<%- include("../components/header.ejs", { titulo , ocultarbtnreg, ocultarbtnini }) %>
+
+<main>
     <div class="main-content">
       <section>
         <div >
           <h2>Construye tu recorrido turistico</h2>
+
+          
           
           <main class="map-container">
             <div id="mapa"></div>
@@ -84,40 +88,60 @@
         </div>
       </section>
 
-        <!-- Panel de formulario de reserva -->
-        <div class="panel">
-          <h2>Guardar Reserva</h2>
-          <form id="form-reserva" class="form-reserva">
-            <div class="form-group">
-              <label for="cedula">Numero de Cedula *</label>
-              <input type="text" id="cedula" name="cedula" required placeholder="Ej: 1234567890">
+        <% if ( usuario !== undefined) { %>
+
+            <div class="panel">
+          <h2>Información Personal</h2>
+          
+          <div class="datos-reserva">
+          
+          <form id="form-reserva" class="datos-reserva">
+            <div class="dato-item">
+              <label for="cedula" class="dato-label">Numero de Cedula</label>
+              <span class="dato-valor"><%= usuario?.cedula %></span>
+              <input type="text" id="cedula" name="cedula" value="<%= usuario?.cedula %>" placeholder="Ej: 1234567890" style="display: none">
             </div>
-            <div class="form-group">
-              <label for="nombre">Nombre Completo *</label>
-              <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Perez">
+            <div class="dato-item">
+              <label for="nombre" class="dato-label">Nombre Completo</label>
+              <span class="dato-valor"><%= usuario.nombre %></span>
+              <input type="text" id="nombre" name="nombre" value="<%= usuario.nombre %>" placeholder="Ej: Juan Perez" style="display: none">
             </div>
-            <div class="form-group">
-              <label for="email">Correo Electronico</label>
-              <input type="email" id="email" name="email" placeholder="Ej: correo@ejemplo.com">
+            <div class="dato-item">
+              <label for="email" class="dato-label">Correo Electronico</label>
+              <span class="dato-valor"><%= usuario.email %></span>
+              <input type="email" id="email" name="email" value="<%= usuario.email %>" placeholder="Ej: correo@ejemplo.com" style="display: none">
             </div>
-            <div class="form-group">
-              <label for="telefono">Telefono</label>
-              <input type="tel" id="telefono" name="telefono" placeholder="Ej: 3001234567">
+            <div class="dato-item">
+              <label for="telefono" class="dato-label">Telefono</label>
+              <span class="dato-valor"><%= usuario.telefono %></span>
+              <input type="tel" id="telefono" value="<%= usuario.telefono %>" name="telefono" placeholder="Ej: 3001234567" style="display: none">
             </div>
-            <div class="form-group">
-              <label for="fechaVisita">Fecha de Visita</label>
-              <input type="date" id="fechaVisita" name="fechaVisita">
+            <div class="dato-item">
+              <label for="fechaVisita" class="dato-label">Fecha de Visita</label>
+              <input type="date" id="fechaVisita" name="fechaVisita" class="inputreg">
             </div>
             <button type="submit" class="btn-reservar" id="btn-reservar" disabled>
               Guardar Reserva
             </button>
             <p class="form-hint">* Selecciona al menos un lugar para guardar la reserva</p>
           </form>
+
+          </div>
+
           <div id="mensaje-reserva"></div>
         </div>
+
+      <% } else { %>
+
+        <div>
+          <h2>Inicia secion para realizar una reservacion</h2>
+        </div>
+
+      <% } %>
       
     </div>
   </div>
+
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -125,6 +149,8 @@
   <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
 
   <script>
+
+  
     // Inicializar mapa centrado en Las Lajas
     const mapa = L.map('mapa').setView([0.8150, -77.6200], 13);
 
@@ -143,7 +169,7 @@
     // Función para crear marcador personalizado
     function crearMarcador(lat, lng, color, icono, nombre, descripcion) {
       const markerHtml = `
-        <div style="
+        <img style="
           background: ${color};
           width: 36px;
           height: 36px;
@@ -154,7 +180,7 @@
           font-size: 18px;
           box-shadow: 0 3px 10px rgba(0,0,0,0.3);
           border: 3px solid white;
-        ">${icono}</div>
+        " src="${icono}"></img>
       `;
 
       const icon = L.divIcon({
@@ -381,6 +407,7 @@
           headers: {
             'Content-Type': 'application/json'
           },
+          credentials: "include", 
           body: JSON.stringify(datos)
         });
 
@@ -444,5 +471,5 @@
       btn.addEventListener('click', onContinue);
     }
   </script>
-
+</main>
 <%- include("../components/footer.ejs") %>

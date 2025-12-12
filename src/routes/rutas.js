@@ -1,3 +1,5 @@
+import { oc } from "date-fns/locale/oc"
+import express from "express"
 import { Router } from "express"
 import fs from "fs"
 import path from "path"
@@ -8,9 +10,9 @@ const __dirname = path.dirname(__filename)
 
 const router = Router()
 
+
 const reservasFile = path.join(__dirname, "../data/reservas.json")
 
-// Asegurar que existe el directorio y archivo de reservas
 function initReservasFile() {
   const dataDir = path.join(__dirname, "../data")
   if (!fs.existsSync(dataDir)) {
@@ -21,7 +23,6 @@ function initReservasFile() {
   }
 }
 
-// Leer reservas del archivo
 function leerReservas() {
   initReservasFile()
   const data = fs.readFileSync(reservasFile, "utf-8")
@@ -34,7 +35,6 @@ function guardarReservas(reservas) {
   fs.writeFileSync(reservasFile, JSON.stringify(reservas, null, 2), "utf-8")
 }
 
-// Datos de lugares turísticos de Las Lajas e Ipiales
 const lugaresTuristicos = [
   {
     id: "santuario",
@@ -102,7 +102,7 @@ const lugaresTuristicos = [
   },
 ]
 
-// Guías turísticos de ejemplo
+
 const guiasTuristicos = [
   { id: 'g1', nombre: 'Carlos Mendoza', foto: 'https://i.pravatar.cc/150?img=11', rating: 5 },
   { id: 'g2', nombre: 'María López', foto: 'https://i.pravatar.cc/150?img=12', rating: 4 },
@@ -116,12 +116,14 @@ const guiasTuristicos = [
   { id: 'g10', nombre: 'Laura Peña', foto: 'https://i.pravatar.cc/150?img=20', rating: 4 },
 ]
 
-// Ruta principal del mapa turístico
 router.get("/guia_turistica", (req, res) => {
   res.render("guia_turistica", {
     titulo: "Mapa Turístico - Las Lajas e Ipiales",
     lugares: lugaresTuristicos,
     guias: guiasTuristicos,
+    ocultarbtnreg: true,
+    ocultarbtnini: true,
+    usuario: req.session.user
   })
 })
 
@@ -129,10 +131,15 @@ router.get("/consulta_reserva", (req, res) => {
   res.render("consulta_reserva", {
     titulo: "Consultar Reserva - Las Lajas e Ipiales",
     lugares: lugaresTuristicos,
+    ocultarbtnreg: true,
+    ocultarbtnini: true,
     reserva: null,
     error: null,
+    usuario: req.session.user
   })
 })
+
+
 
 router.post("/api/reservas", (req, res) => {
   try {
@@ -219,5 +226,7 @@ router.delete('/api/reservas/:id', (req, res) => {
     res.status(500).json({ error: 'Error al eliminar la reserva' })
   }
 })
+
+
 
 export default router

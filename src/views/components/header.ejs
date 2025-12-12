@@ -34,8 +34,26 @@
       <div class="butmdiv"><a href="/consulta_reserva">Consulta tu reservacion</a></div>
     </nav>
   </div>
-  <div>
-    <a href="" class="btn-reg">Registrarse</a>
-    <a href="" class="btn-ini">Iniciar sesion</a>
+
+  <% if (typeof user !== 'undefined' && user) { %>
+      <div>
+        <span class="user-greeting">Bienvenido, <%= user.nombre %></span>
+        <a href="/logout" class="btn-reg">Cerrar sesión</a>
+      </div>
+      <% } else { %>
+        <div>
+    
+      <% if (ocultarbtnreg) { %>
+        <a href="/registro" class="btn-reg">Registrarse</a>
+      <% } %>
+
+    
+      <% if (ocultarbtnini) { %>
+        <a href="/iniciosesion" class="btn-ini">Iniciar sesion</a>
+      <% } %>
+
   </div>
+  <% } %>
+
+  
 </header>

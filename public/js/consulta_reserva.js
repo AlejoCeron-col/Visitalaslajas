@@ -196,7 +196,7 @@
         eliminarBtn = document.createElement('button');
         eliminarBtn.id = 'btn-eliminar-reserva';
         eliminarBtn.className = 'btn-eliminar';
-        eliminarBtn.textContent = 'Eliminar reserva';
+        eliminarBtn.textContent = 'Cancelar';
         datosReserva.parentElement.appendChild(eliminarBtn);
       }
       // Guardar id de reserva en el botón

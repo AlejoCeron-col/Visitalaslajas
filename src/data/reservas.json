@@ -1,19 +1,5 @@
 [
   {
-    "id": "1765515558940",
-    "cedula": "1234",
-    "nombre": "nom app",
-    "email": "correo@gmail.com",
-    "telefono": "12345678",
-    "fechaVisita": "2025-12-22",
-    "lugaresSeleccionados": [
-      "mirador-lajas",
-      "centro-ipiales"
-    ],
-    "guiaId": "g4",
-    "fechaCreacion": "2025-12-12T04:59:18.940Z"
-  },
-  {
     "id": "1765515818743",
     "cedula": "1",
     "nombre": "1",
